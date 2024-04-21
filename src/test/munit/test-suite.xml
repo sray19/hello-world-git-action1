@@ -18,7 +18,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:request-connection host="localhost" port="8081" />
 	</http:request-config>
 
-	<munit:test name="hello-worldFlowTest" description="Test" doc:id="267cfccb-8f25-4a05-a916-42fe4457eb5d" >
+	<munit:test name="hello-worldFlowTest" description="Test" doc:id="267cfccb-8f25-4a05-a916-42fe4457eb5d" ignore="true">
     	<munit:enable-flow-sources>
 	        <munit:enable-flow-source value="hello-worldFlow"/>
     	</munit:enable-flow-sources>

@@ -13,7 +13,7 @@
 
     <properties>
         <munit.version>2.1.2</munit.version>
-        <mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
+        <mule.maven.plugin.version>4.1.1</mule.maven.plugin.version>
     </properties>
 
     <build>
@@ -24,14 +24,27 @@
             </testResource>
         </testResources>
         <plugins>
+            
             <plugin>
-                <groupId>org.mule.tools.maven</groupId>
-                <artifactId>mule-maven-plugin</artifactId>
-                <version>${mule.maven.plugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <classifier>mule-application</classifier>
-                </configuration>
+              <groupId>org.mule.tools.maven</groupId>
+              <artifactId>mule-maven-plugin</artifactId>
+              <version>${mule.maven.plugin.version}</version>
+              <extensions>true</extensions>
+              <configuration>
+                <classifier>mule-application</classifier>
+                <cloudHubDeployment>
+                  <muleVersion>4.3.0</muleVersion>
+                  <username>${env.PLATFORM_USERNAME}</username>
+                  <password>${env.PLATFORM_PASSWORD}</password>
+                  <applicationName>hello-world-8282-{env}</applicationName>
+                  <environment>Sandbox</environment>
+                  <workers>1</workers>
+                  <workerType>MICRO</workerType>
+                  <objectStoreV2>true</objectStoreV2>
+                  <region>us-east-2</region>
+                  <businessGroupId>${env.BUS_GROUP_ID}</businessGroupId>
+                </cloudHubDeployment>
+              </configuration>
             </plugin>
             <plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
